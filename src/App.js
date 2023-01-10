@@ -1,14 +1,16 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 function App() {
   const [toptime, setTopTime] = useState(9);
   const [bottomtime, setBottomTime] = useState(9);
   const [flip, setFlip] = useState(true);
-  // const flipChange = () => {
-  //   setTimeout(() => {
-  //     setFlip((previous) => !previous);
-  //   }, 1);
-  //};
+  const flipChange = () => {
+    if ((toptime, bottomtime > 0)) {
+      setTimeout(() => {
+        setFlip((previous) => !previous);
+      }, 1);
+    }
+  };
   return (
     <>
       <div class="flip-card flip">
@@ -29,8 +31,10 @@ function App() {
             className="above-bottom"
             onAnimationStart={(e) => {
               setBottomTime((currentTime) => currentTime - 1);
+            }}
+            onAnimationEnd={(e) => {
               setFlip((current) => !current);
-              //flipChange();
+              flipChange();
             }}
           >
             {bottomtime}

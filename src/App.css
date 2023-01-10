@@ -75,7 +75,7 @@ body {
   position: absolute;
   top: 150px;
   background-color: var(--flipCard);
-  animation: curve-bottom var(--flipTime) ease-out var(--flipTime);
+  animation: curve-bottom var(--flipTime) ease-in var(--flipTime);
   transform-origin: top;
   transform: rotateX(90deg);
 }
