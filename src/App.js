@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useState, useEffect } from "react";
 function App() {
+  const [toptime, setTopTime] = useState(9);
+  const [bottomtime, setBottomTime] = useState(9);
+  const [flip, setFlip] = useState(true);
+  // const flipChange = () => {
+  //   setTimeout(() => {
+  //     setFlip((previous) => !previous);
+  //   }, 1);
+  //};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div class="flip-card flip">
+        <div class="top">{toptime}</div>
+        <div class="bottom">{bottomtime}</div>
+        {flip && (
+          <div
+            className="above-top"
+            onAnimationEnd={(e) => {
+              setTopTime((currentTime) => currentTime - 1);
+            }}
+          >
+            {toptime}
+          </div>
+        )}
+        {flip && (
+          <div
+            className="above-bottom"
+            onAnimationStart={(e) => {
+              setBottomTime((currentTime) => currentTime - 1);
+              setFlip((current) => !current);
+              //flipChange();
+            }}
+          >
+            {bottomtime}
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
